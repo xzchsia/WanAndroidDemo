@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="bottom_nav_item_selected">#0085ff</color>
+    <color name="bottom_nav_item_unselected">#999999</color>
 </resources>
