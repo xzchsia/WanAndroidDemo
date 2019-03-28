@@ -1,23 +1,27 @@
 package io.github.xzchsia.wanandroiddemo;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_nav) BottomNavigationViewEx bottomNavigationView;
+//    @Nullable @BindView(R.id.toolbar) protected Toolbar toolbar;
+//    @Nullable @BindView(R.id.appbar_layout) protected AppBarLayout appbarLayout;
 
     private FragmentManager fragmentManager;
     private List<Fragment> fragmentList = new ArrayList<>();
@@ -29,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /// 绑定控件
         ButterKnife.bind(this);
+//        if (toolbar != null) {
+//            setSupportActionBar(toolbar);
+//        }
 
         fragmentManager = getSupportFragmentManager();
         // 创建 fragment
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // todo 目前测试使用Fragment，后续修改
-        BlankFragment homeFragment = new BlankFragment();
+        HomeFragment homeFragment = new HomeFragment();
         fragmentList.add(homeFragment);
         fragmentTransaction.add(R.id.fragment_container, homeFragment);
 
