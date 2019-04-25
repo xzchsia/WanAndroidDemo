@@ -75,7 +75,8 @@ public class HomeFragment extends Fragment {
         MyAppInit myAppInit = new MyAppInit();
         DataManager dataManager = new DataManager(myAppInit.provideWanAndroidService(myAppInit.getRetrofit()));
         Observable<BaseResponse<List<Banner>>> observable = dataManager.getBannerData();
-//        System.out.println("111111111111111111111");
+
+        /// 方法一，使用Function剥离出所需的Data
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .map(new Function<BaseResponse<List<Banner>>, List<Banner>>() {
@@ -115,5 +116,30 @@ public class HomeFragment extends Fragment {
                 System.out.println("ffffffffffffffffffffff");
             }
         });
+
+        /// 方法二，不剥离，输出原始数据解析
+//        observable.observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Observer<BaseResponse<List<Banner>>>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(BaseResponse<List<Banner>> listBaseResponse) {
+//                System.out.println("ffffffffffffffffffffff");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
     }
 }
